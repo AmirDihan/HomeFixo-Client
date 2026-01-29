@@ -3,22 +3,57 @@ import { use } from "react";
 import AuthContext from "../../context/AuthContext";
 
 const AddService = () => {
-  const {user} = use(AuthContext)
+  const { user } = use(AuthContext);
   // console.log(user)
+
+  const handleAddService = (event) => {
+    event.preventDefault()
+
+    const formData = {
+      servieName : event.target.serviceName.value,
+      category: event.target.category.value,
+      price: event.target.price.value,
+      description: event.target.description.value,
+      imageUrl: event.target.imageUrl.value,
+      providerName: event.target.providerName.value,
+      email: event.target.email.value,
+      created_at: new Date()
+    }
+    
+    fetch('http://localhost:3000/service', {
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json",
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+    event.target.reset()
+
+  };
   return (
     <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-10">
       <div className="card-body p-6 relative">
-        <h2 className="text-2xl font-bold text-center text-blue-500 mb-6">Add New Service</h2>
-        <form className="space-y-4">
-          {/* Name Field */}
+        <h2 className="text-2xl font-bold text-center text-blue-500 mb-6">
+          Add New Service
+        </h2>
+        <form onSubmit={handleAddService} className="space-y-4">
+          {/* Service Name, Category, Price, Description, Image URL, Provider Name, Email */}
+
+          {/* Service Name Field */}
           <div>
-            <label className="label font-medium">Name</label>
+            <label className="label font-medium">Service Name</label>
             <input
               type="text"
-              name="name"
-              defaultValue={user.displayName}
+              name="serviceName"
               required
-              readOnly
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Enter name"
             />
@@ -47,6 +82,18 @@ const AddService = () => {
             </select>
           </div>
 
+          {/* Price Field */}
+          <div>
+            <label className="label font-medium">Price</label>
+            <input
+              type="text"
+              name="price"
+              required
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+              placeholder="Enter price"
+            />
+          </div>
+
           {/* Description Textarea */}
           <div>
             <label className="label font-medium">Description</label>
@@ -61,13 +108,39 @@ const AddService = () => {
 
           {/* Thumbnail URL */}
           <div>
-            <label className="label font-medium">Thumbnail URL</label>
+            <label className="label font-medium">Image URL</label>
             <input
               type="url"
-              name="thumbnail"
+              name="imageUrl"
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="https://example.com/image.jpg"
+            />
+          </div>
+
+          {/* Provider Name Field */}
+          <div>
+            <label className="label font-medium">Provider Name</label>
+            <input
+              type="text"
+              name="providerName"
+              defaultValue={user.displayName}
+              readOnly
+              required
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+            />
+          </div>
+
+          {/* Email Field */}
+          <div>
+            <label className="label font-medium">Service Name</label>
+            <input
+              type="text"
+              name="email"
+              defaultValue={user.email}
+              readOnly
+              required
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
             />
           </div>
 
