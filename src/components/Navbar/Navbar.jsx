@@ -73,7 +73,7 @@ const Navbar = () => {
         <div className="dropdown dropdown-hover dropdown-bottom navbar-end">
           <div tabIndex={0} role="button" className="m-1">
             <img
-              className="rounded-full w-11 h-11 border-1"
+              className="rounded-full w-11 h-11 border"
               src={user.photoURL}
               alt="user"
             />
