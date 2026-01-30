@@ -7,43 +7,53 @@ const Registration = () => {
   const { createUser, updateUserProfile, signInWithGoogle } = use(AuthContext);
   const navigate = useNavigate();
 
-  const handleRegister = () => {
+  const handleRegister = async (event) => {
     event.preventDefault();
     const displayName = event.target.displayName.value;
     const photoURL = event.target.photoURL.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    toast.loading("Creating user...", { id: "create-user" });
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (password.length<6) {
+      toast.error("Password must be minimum of 6 characters!")
+      return;
+    }
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must contain an uppercase and a lowercase letter",
+      );
+      return;
+    }
 
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        updateUserProfile(displayName, photoURL);
-        toast.success("User created successfully!", {
-          id: "create-user",
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error.message, { id: "create-user" });
-      });
+    const result = await createUser(email, password)
+      try{
+        // console.log(result.user);
+        const res = await updateUserProfile(displayName, photoURL);
+        try{
+          toast.success("Profile updated successfully!")
+        } catch(error){
+          toast.error(error.message)
+        }
+        toast.success("User created successfully!");
+      }
+      catch(error){
+        // console.log(error);
+        toast.error(error.message);
+      };
   };
 
-  const handleGoogleSignIn = () => {
-    toast.loading("Creating user...", { id: "create-user" });
-    signInWithGoogle()
-      .then((result) => {
-        toast.success("User created successfully!", {
-          id: "create-user",
-        });
-        console.log(result.user);
+  const handleGoogleSignIn = async () => {
+    const result = await signInWithGoogle()
+      try {
+        toast.success("User created successfully!");
+        // console.log(result.user);
         navigate("/");
-      })
-      .catch((error) => {
+      }
+      catch (error){
         console.log(error);
-        toast.error(error.message, { id: "create-user" });
-      });
+        toast.error(error.message);
+      };
   };
 
   return (
@@ -52,7 +62,7 @@ const Registration = () => {
         <h1 className="text-3xl font-bold text-center">Register</h1>
         <form onSubmit={handleRegister}>
           <fieldset className="fieldset">
-            {/* email field */}
+            {/* Name field */}
             <label className="label">Name</label>
             <input
               type="text"
@@ -61,13 +71,6 @@ const Registration = () => {
               placeholder="Name"
             />
 
-            <label className="label">PhotoURL</label>
-            <input
-              type="text"
-              name="photoURL"
-              className="input rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="Photo URL"
-            />
             {/* email field */}
             <label className="label">Email</label>
             <input
@@ -76,6 +79,16 @@ const Registration = () => {
               className="input rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Email"
             />
+
+            {/* PhotoUrl field */}
+            <label className="label">PhotoURL</label>
+            <input
+              type="text"
+              name="photoURL"
+              className="input rounded-full focus:border-0 focus:outline-gray-200"
+              placeholder="Photo URL"
+            />
+
             {/* password field */}
             <label className="label">Password</label>
             <input
