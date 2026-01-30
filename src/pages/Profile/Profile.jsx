@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import { Link } from 'react-router';
 
 export default function Profile() {
   const { user, signOutUser } = useContext(AuthContext);
+  // console.log(user);
 
   //className="btn mt-3 w-full bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium"
 
@@ -33,9 +35,9 @@ export default function Profile() {
 
           {/* Buttons */}
           <div className="card-actions mt-4 w-full flex gap-3">
-            <button className="btn btn-outline border-blue-400 hover:border-blue-700 text-blue-600 flex-1 rounded-xl">
+            <Link to={'/update-profile'} className="btn btn-outline border-blue-400 hover:border-blue-700 text-blue-600 flex-1 rounded-xl">
               Edit Profile
-            </button>
+            </Link>
             <button
               className="btn mt-3 w-full bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium"
               onClick={signOutUser}

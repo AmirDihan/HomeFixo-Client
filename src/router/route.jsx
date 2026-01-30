@@ -9,6 +9,7 @@ import MyServices from "../pages/MyServices/MyServices.jsx";
 import AddService from "../pages/AddService/AddService.jsx";
 import MyBookings from "../pages/MyBookings/MyBookings.jsx";
 import Profile from "../pages/Profile/Profile.jsx";
+import UpdateProfile from "../pages/UpdateProfile/UpdateProfile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile></Profile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update-profile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile></UpdateProfile>
           </PrivateRoute>
         ),
       },
