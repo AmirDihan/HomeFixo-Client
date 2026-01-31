@@ -92,7 +92,7 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="navbar-end">
-          <Link to={"auth/login"}>Login</Link>
+          <Link to={"auth/login"} className="btn mt-3 w-full bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium">Login</Link>
         </div>
       )}
     </div>
