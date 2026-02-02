@@ -1,8 +1,45 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 const ProviderServiceCard = ({ service }) => {
   const { _id, serviceName, category, price, imageUrl, description } = service;
   // console.log(service);
+
+  const navigate = useNavigate();
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/delete-service/${service._id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            navigate("/my-services");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
+  };
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition">
       {/* Image */}
@@ -34,12 +71,12 @@ const ProviderServiceCard = ({ service }) => {
             Edit
           </Link>
 
-          <Link
-            to={`/delete-service/${_id}`}
-            className="btn mt-3 w-full bg-linear-to-r from-red-400 to-red-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium"
+          <button
+            onClick={handleDelete}
+            className="btn mt-3 w-full bg-linear-to-r from-red-400 to-red-700 hover:to-red-900 text-white py-2 rounded-lg text-sm font-medium"
           >
             Delete
-          </Link>
+          </button>
         </div>
       </div>
     </div>

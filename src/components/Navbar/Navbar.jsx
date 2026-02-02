@@ -29,6 +29,9 @@ const Navbar = () => {
       <Link to={"/my-services"}>My Services</Link>
     </li>,
     <li>
+      <Link to={"/my-bookings"}>My Bookings</Link>
+    </li>,
+    <li>
       <Link to={"/add-service"}>Add Services</Link>
     </li>,
   ];
