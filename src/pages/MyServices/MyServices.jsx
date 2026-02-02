@@ -13,7 +13,7 @@ const MyServices = () => {
     fetch(`http://localhost:3000/my-services?email=${user.email}`)
     .then(res => {return res.json()})
     .then(data => {
-      console.log(data.result)
+      // console.log(data.result)
       setProviderServices(data.result)
     })
     .catch(error => console.log(error.message))

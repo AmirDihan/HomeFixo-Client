@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 const ProviderServiceCard = ({ service }) => {
   const { _id, serviceName, category, price, imageUrl, description } = service;
-  console.log(service);
+  // console.log(service);
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition">
       {/* Image */}

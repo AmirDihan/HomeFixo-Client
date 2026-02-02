@@ -6,7 +6,7 @@ import { useLoaderData, useNavigate } from "react-router";
 const EditSerive = () => {
   const data = useLoaderData();
   const service = data.result;
-  console.log(service);
+//   console.log(service);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const EditSerive = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         navigate(`/service-details/${service._id}`)
       })
       .catch((error) => {
