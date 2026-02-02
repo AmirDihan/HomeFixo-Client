@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 const ProviderServiceCard = ({ service }) => {
   const { _id, serviceName, category, price, imageUrl, description } = service;
-  console.log(service)
+  console.log(service);
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition">
       {/* Image */}
@@ -34,11 +34,12 @@ const ProviderServiceCard = ({ service }) => {
             Edit
           </Link>
 
-          <button
+          <Link
+            to={`/delete-service/${_id}`}
             className="btn mt-3 w-full bg-linear-to-r from-red-400 to-red-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium"
           >
             Delete
-          </button>
+          </Link>
         </div>
       </div>
     </div>

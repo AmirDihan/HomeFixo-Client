@@ -10,6 +10,7 @@ import AddService from "../pages/AddService/AddService.jsx";
 import MyBookings from "../pages/MyBookings/MyBookings.jsx";
 import Profile from "../pages/Profile/Profile.jsx";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile.jsx";
+import EditSerive from "../pages/EditService/EditSerive.jsx";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,15 @@ const router = createBrowserRouter([
             <UpdateProfile></UpdateProfile>
           </PrivateRoute>
         ),
+      },
+      {
+        path: `/edit-service/:id`,
+        element: (
+          <PrivateRoute>
+            <EditSerive></EditSerive>
+          </PrivateRoute>
+        ),
+        loader: ({params}) => fetch(`http://localhost:3000/service-details/${params.id}`),
       },
     ],
   },

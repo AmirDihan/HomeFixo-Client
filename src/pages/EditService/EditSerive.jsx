@@ -1,50 +1,50 @@
 import React from "react";
-import { use } from "react";
-import AuthContext from "../../context/AuthContext";
+import { useContext } from "react";
+import AuthContext from "./../../context/AuthContext";
+import { useLoaderData, useNavigate } from "react-router";
 
-const AddService = () => {
-  const { user } = use(AuthContext);
-  // console.log(user)
+const EditSerive = () => {
+  const data = useLoaderData();
+  const service = data.result;
+  console.log(service);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleAddService = (event) => {
-    event.preventDefault()
-
+  const handleEditService = (event) => {
+    event.preventDefault();
     const formData = {
-      serviceName : event.target.serviceName.value,
+      serviceName: event.target.serviceName.value,
       category: event.target.category.value,
       price: event.target.price.value,
       description: event.target.description.value,
       imageUrl: event.target.imageUrl.value,
-      providerName: event.target.providerName.value,
-      email: event.target.email.value,
-      created_at: new Date()
-    }
-    
-    fetch('http://localhost:3000/service', {
-      method: "POST",
+    };
+
+    fetch(`http://localhost:3000/edit-service/${service._id}`, {
+      method: "PUT",
       headers: {
-        "Content-Type" : "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate(`/service-details/${service._id}`)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-    event.target.reset()
-
+    event.target.reset();
   };
   return (
     <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-10">
       <div className="card-body p-6 relative">
         <h2 className="text-2xl font-bold text-center text-blue-500 mb-6">
-          Add New Service
+          Edit the Service
         </h2>
-        <form onSubmit={handleAddService} className="space-y-4">
+        <form onSubmit={handleEditService} className="space-y-4">
           {/* Service Name, Category, Price, Description, Image URL, Provider Name, Email */}
 
           {/* Service Name Field */}
@@ -54,6 +54,7 @@ const AddService = () => {
               type="text"
               name="serviceName"
               required
+              defaultValue={service.serviceName}
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Enter name"
             />
@@ -63,9 +64,9 @@ const AddService = () => {
           <div>
             <label className="label font-medium">Category</label>
             <select
-              defaultValue={""}
               name="category"
               required
+              defaultValue={service.category}
               className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
             >
               <option value="" disabled>
@@ -89,6 +90,7 @@ const AddService = () => {
               type="text"
               name="price"
               required
+              defaultValue={service.price}
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Enter price"
             />
@@ -100,6 +102,7 @@ const AddService = () => {
             <textarea
               name="description"
               required
+              defaultValue={service.description}
               rows="3"
               className="textarea w-full rounded-2xl focus:border-0 focus:outline-gray-200 h-62"
               placeholder="Enter description"
@@ -112,6 +115,7 @@ const AddService = () => {
             <input
               type="url"
               name="imageUrl"
+              defaultValue={service.imageUrl}
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="https://example.com/image.jpg"
@@ -149,7 +153,7 @@ const AddService = () => {
             type="submit"
             className="btn mt-3 w-full bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium"
           >
-            Add Service
+            Edit Service
           </button>
         </form>
       </div>
@@ -157,4 +161,4 @@ const AddService = () => {
   );
 };
 
-export default AddService;
+export default EditSerive;
