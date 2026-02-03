@@ -11,7 +11,7 @@ const Navbar = () => {
       signOutUser();
       toast.success("Logged Out Successfully!");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -65,7 +65,12 @@ const Navbar = () => {
             {user ? privateItems : ""}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">HomeFixo</a>
+          <a className="btn btn-ghost w-40">
+            <img
+              className="w-full h-full object-contain"
+              src="https://i.ibb.co.com/7Nkr8SqB/Screenshot-2026-02-03-205530-removebg-preview.png"
+            />
+          </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -95,7 +100,12 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="navbar-end">
-          <Link to={"auth/login"} className="btn mt-3 bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium">Login</Link>
+          <Link
+            to={"auth/login"}
+            className="btn bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium"
+          >
+            Login
+          </Link>
         </div>
       )}
     </div>
