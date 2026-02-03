@@ -12,12 +12,17 @@ import Profile from "../pages/Profile/Profile.jsx";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile.jsx";
 import EditSerive from "../pages/EditService/EditSerive.jsx";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails.jsx";
+import ErrorPage from "../pages/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
     children: [
+      {
+        path: "/*",
+        Component: ErrorPage,
+      },
       {
         path: "/auth/login",
         Component: Login,

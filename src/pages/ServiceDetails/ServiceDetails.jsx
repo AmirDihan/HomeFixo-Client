@@ -17,11 +17,12 @@ const ServiceDetails = () => {
     const bookingInfo = {
       customerName : e.target.customerName.value,
       customerEmail : e.target.customerEmail.value,
+      customerImage : user.photoURL,
       serviceId : service._id,
       bookingDate : e.target.bookingDate.value,
       price : service.price,
     }
-
+    // console.log(user)
     // console.log(bookingInfo)
 
     fetch('http://localhost:3000/booking',{
