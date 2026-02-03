@@ -1,10 +1,14 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import AuthContext from "../../context/AuthContext";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, signOutUser } = use(AuthContext);
+  const navLinkClass = ({ isActive }) =>
+  isActive
+    ? "text-blue-600 font-semibold border-b-2 border-blue-600"
+    : "text-gray-600";
 
   const handleLogout = async () => {
     try {
@@ -17,22 +21,47 @@ const Navbar = () => {
 
   const navItems = [
     <li>
-      <Link to={"/home"}>Home</Link>
+      <NavLink
+        className={navLinkClass}
+        to={"/home"}
+      >
+        Home
+      </NavLink>
     </li>,
     <li>
-      <Link to={"/services"}>Services</Link>
+      <NavLink
+        className={navLinkClass}
+        to={"/services"}
+      >
+        Services
+      </NavLink>
     </li>,
   ];
 
   const privateItems = [
     <li>
-      <Link to={"/my-services"}>My Services</Link>
+      <NavLink
+        className={navLinkClass}
+        to={"/my-services"}
+      >
+        My Services
+      </NavLink>
     </li>,
     <li>
-      <Link to={"/my-bookings"}>My Bookings</Link>
+      <NavLink
+        className={navLinkClass}
+        to={"/my-bookings"}
+      >
+        My Bookings
+      </NavLink>
     </li>,
     <li>
-      <Link to={"/add-service"}>Add Services</Link>
+      <NavLink
+        className={navLinkClass}
+        to={"/add-service"}
+      >
+        Add Services
+      </NavLink>
     </li>,
   ];
 
@@ -65,12 +94,12 @@ const Navbar = () => {
             {user ? privateItems : ""}
           </ul>
         </div>
-          <a className="btn btn-ghost w-40">
-            <img
-              className="w-full h-full object-contain"
-              src="https://i.ibb.co.com/7Nkr8SqB/Screenshot-2026-02-03-205530-removebg-preview.png"
-            />
-          </a>
+        <a className="btn btn-ghost w-40">
+          <img
+            className="w-full h-full object-contain"
+            src="https://i.ibb.co.com/7Nkr8SqB/Screenshot-2026-02-03-205530-removebg-preview.png"
+          />
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -93,7 +122,7 @@ const Navbar = () => {
             <li>
               <Link to={"/profile"}>Profile</Link>
             </li>
-            <button onClick={() => handleLogout()} className="btn ">
+            <button onClick={() => handleLogout()} className="btn bg-linear-to-r from-red-400 to-red-700 hover:to-red-900 text-white py-2 rounded-lg text-sm font-medium">
               Logout
             </button>
           </ul>

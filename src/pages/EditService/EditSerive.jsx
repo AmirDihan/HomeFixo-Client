@@ -28,7 +28,7 @@ const EditSerive = () => {
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then(() => {
         // console.log(data);
         navigate(`/service-details/${service._id}`)
       })
