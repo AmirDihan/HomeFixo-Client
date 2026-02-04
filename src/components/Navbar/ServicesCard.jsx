@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const ServicesCard = ({service}) => {
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden h-80 flex flex-col">
+    <div className="bg-base-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden h-80 flex flex-col">
       
       {/* Image */}
       <div className="h-44 w-full overflow-hidden">

@@ -3,7 +3,8 @@ import { use } from 'react'
 import AuthContext from '../../context/AuthContext'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import ProviderServiceCard from '../../components/Navbar/ProviderServiceCard'
+import { DotLoader } from 'react-spinners';
+import ProviderServiceCard from '../../components/Navbar/ProviderServiceCard';
 
 const MyServices = () => {
 

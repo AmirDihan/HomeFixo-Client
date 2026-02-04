@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router";
-
 const ErrorPage = () => {
   return (
     <div className="w-full mx-auto mt-10">

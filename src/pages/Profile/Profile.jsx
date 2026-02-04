@@ -9,8 +9,8 @@ export default function Profile() {
   //className="btn mt-3 w-full bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium"
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-100 to-slate-200 flex items-center justify-center p-4">
-      <div className="card w-full max-w-md bg-white shadow-xl rounded-2xl">
+    <div className="mt-10 p-4 min-w-100 min-h-150">
+      <div className="card w-full h-full max-w-md bg-white shadow-xl rounded-2xl">
         <div className="card-body items-center text-center">
           {/* Avatar */}
           <div className="avatar">
@@ -29,7 +29,7 @@ export default function Profile() {
           <p className="text-sm text-gray-500 flex items-center gap-1">
             📧 {user?.email || "amir@example.com"}
           </p>
-          <span className="badge text-blue-700 mt-1">
+          <span className="badge text-blue-700 bg-base-300 mt-1">
             {user?.role || "User"}
           </span>
 

@@ -3,50 +3,55 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router";
 import AuthContext from "../../context/AuthContext";
 import { useRef } from "react";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const ServiceDetails = () => {
   const service = useLoaderData().result;
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   // console.log(user)
   // console.log(service)
+
+  const disable = user.email == service.email;
+  // const disabled = () => {
+  //   disable ? "disabled" :" "
+  // }
+  // console.log(disabled)
 
   const handleBooking = (e) => {
     e.preventDefault();
 
     const bookingInfo = {
-      customerName : e.target.customerName.value,
-      customerEmail : e.target.customerEmail.value,
-      customerImage : user.photoURL,
-      serviceId : service._id,
-      bookingDate : e.target.bookingDate.value,
-      price : service.price,
-    }
+      customerName: e.target.customerName.value,
+      customerEmail: e.target.customerEmail.value,
+      customerImage: user.photoURL,
+      serviceId: service._id,
+      bookingDate: e.target.bookingDate.value,
+      price: service.price,
+    };
     // console.log(user)
     // console.log(bookingInfo)
 
-    fetch('http://localhost:3000/booking',{
-      method: 'POST',
+    fetch("http://localhost:3000/booking", {
+      method: "POST",
       headers: {
-        'content-type' : 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(bookingInfo)
+      body: JSON.stringify(bookingInfo),
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.result.insertedId){
-        modalRef.current.close()
-        toast.success('Booking successfully submitted!')
-      }
-    })
-    .catch(error => {
-      // console.log(error)
-      toast.error(error)
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.result.insertedId) {
+          modalRef.current.close();
+          toast.success("Booking successfully submitted!");
+        }
+      })
+      .catch((error) => {
+        // console.log(error)
+        toast.error(error);
+      });
+  };
 
-  }
-
-  const modalRef = useRef()
+  const modalRef = useRef();
   return (
     <div className="mt-10 bg-white rounded-xl w-200 mx-auto shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
       {/* Image */}
@@ -81,8 +86,9 @@ const ServiceDetails = () => {
           </div>
 
           <button
+            disabled={disable}
             onClick={() => modalRef.current.showModal()}
-            className="btn mt-3 w-full bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium"
+            className="btn mt-3 w-full bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900  disabled:from-gray-400 disabled:to-gray-500 text-white py-2 rounded-lg text-sm font-medium"
           >
             Book Now
           </button>
@@ -133,10 +139,14 @@ const ServiceDetails = () => {
                       placeholder="Enter name"
                     />
                   </div>
-                  <button className="btn mt-3 w-full bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium">Book Service</button>
+                  <button className="btn mt-3 w-full bg-linear-to-r from-blue-400 to-blue-700 hover:to-blue-900 text-white py-2 rounded-lg text-sm font-medium">
+                    Book Service
+                  </button>
                 </form>
                 <form method="dialog">
-                  <button className="btn mt-3 w-full bg-linear-to-r from-red-400 to-red-700 hover:to-red-900 text-white py-2 rounded-lg text-sm font-medium">Cancel</button>
+                  <button className="btn mt-3 w-full bg-linear-to-r from-red-400 to-red-700 hover:to-red-900 text-white py-2 rounded-lg text-sm font-medium">
+                    Cancel
+                  </button>
                 </form>
               </div>
             </div>
