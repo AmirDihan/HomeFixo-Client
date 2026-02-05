@@ -10,7 +10,7 @@ const MainLayouot = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <div className="max-w-300 mx-auto flex-1">
+      <div className="max-w-300 mx-auto flex-1 p-4">
         <Outlet className="w-full"></Outlet>
       </div>
       <div>
