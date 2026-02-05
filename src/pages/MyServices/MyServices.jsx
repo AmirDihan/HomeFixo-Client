@@ -20,7 +20,7 @@ const MyServices = () => {
     .catch(error => console.log(error.message))
   },[user?.email])
   return (
-    <div className='mt-10 max-w-200 mx-auto space-y-6'>
+    <div className='max-w-200 mx-auto space-y-6'>
       {providerServices.map((service, index) => <ProviderServiceCard service={service} key={index}></ProviderServiceCard>)}
     </div>
   )

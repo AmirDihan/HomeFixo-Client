@@ -41,7 +41,7 @@ const ProviderServiceCard = ({ service }) => {
     });
   };
   return (
-    <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition">
+    <div className="card bg-base-200 shadow-xl hover:shadow-2xl transition">
       {/* Image */}
       <figure className="h-80 overflow-hidden">
         <img
