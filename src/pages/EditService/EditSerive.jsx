@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import AuthContext from "./../../context/AuthContext";
 import { useLoaderData, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const EditSerive = () => {
   const data = useLoaderData();
@@ -20,7 +21,7 @@ const EditSerive = () => {
       imageUrl: event.target.imageUrl.value,
     };
 
-    fetch(`http://localhost:3000/edit-service/${service._id}`, {
+    fetch(`https://home-fixo-server.vercel.app/edit-service/${service._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -31,6 +32,7 @@ const EditSerive = () => {
       .then(() => {
         // console.log(data);
         navigate(`/service-details/${service._id}`)
+        toast.success("Your service is edited successfully!")
       })
       .catch((error) => {
         console.log(error);
@@ -39,7 +41,7 @@ const EditSerive = () => {
     event.target.reset();
   };
   return (
-    <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-10">
+    <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
       <div className="card-body p-6 relative">
         <h2 className="text-2xl font-bold text-center text-blue-500 mb-6">
           Edit the Service

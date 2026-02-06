@@ -1,16 +1,115 @@
-# React + Vite
+# 🏠 HomeFixo – Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**HomeFixo** is a modern home service booking platform where users can easily find and book services like plumbing, electrical work, cleaning, and more.  
+It also allows service providers to manage and offer their services through a clean and responsive interface.
 
-Currently, two official plugins are available:
+This repository contains the **frontend (client-side)** code of the HomeFixo application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🌐 Live Website
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔗 https://home-fixo.netlify.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Features
+
+- User authentication (Email & Password)
+- Google login with Firebase
+- Browse available home services
+- View service details
+- Book services (users cannot book their own services)
+- Service provider dashboard
+- Protected routes for authenticated users
+- Loading spinner while fetching data
+- Responsive design for all devices
+- SweetAlert2 for alerts and confirmations
+
+---
+
+## 🧰 Tech Stack
+
+- **React**
+- **React Router DOM**
+- **Tailwind CSS**
+- **Firebase Authentication**
+- **Context API**
+- **SweetAlert2**
+
+---
+
+## 📁 Project Structure
+
+src/
+├── components/
+├── pages/
+├── context/
+├── routes/
+├── hooks/
+├── firebase/
+├── App.jsx
+└── main.jsx
+
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file in the root directory and add the following variables:
+
+```env
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_firebase_app_id
+
+VITE_API_BASE_URL=https://home-fixo-server.vercel.app
+⚠️ Do not commit the .env file to GitHub.
+
+▶️ Run the Client Locally
+1️⃣ Clone the repository
+git clone https://github.com/AmirDihan/HomeFixo-Client.git
+cd HomeFixo-Client
+2️⃣ Install dependencies
+npm install
+3️⃣ Start the development server
+npm run dev
+The client will run on:
+
+http://localhost:5137
+🔄 Backend Dependency
+This client consumes data from the HomeFixo backend API:
+
+🔗 https://home-fixo-server.vercel.app/
+
+Make sure the server is running and accessible.
+
+🛡️ Authentication & Route Protection
+Authentication is handled using Firebase
+
+User state is managed via Context API
+
+Private routes prevent unauthorized access
+
+Service providers cannot book their own services
+
+🌱 Future Improvements
+Service reviews & ratings
+
+Pagination
+
+Payment integration
+
+Advanced filtering and search
+
+Dark mode support
+
+👨‍💻 Author
+Amir Hossan Dihan
+GitHub: https://github.com/AmirDihan
+
+📄 License
+This project is licensed under the MIT License.

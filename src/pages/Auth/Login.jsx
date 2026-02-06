@@ -1,6 +1,6 @@
 import React, { use } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import AuthContext from "../../context/AuthContext";
 import { toast } from "react-toastify";
 
@@ -22,9 +22,9 @@ const Login = () => {
       // console.log(result.user);
       toast.success("Logged in successful!");
       event.target.reset();
-      navigate("/", { replace: true });
+      navigate("/home", { replace: true });
     } catch (error) {
-      console.log(error);
+      toast.error(error)
     }
   };
 
@@ -32,9 +32,9 @@ const Login = () => {
     try {
       const result = await signInWithGoogle();
       toast.success("Logged in successful with Google!");
-      navigate("/", { replace: true });
+      navigate("/home", { replace: true });
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error);
     }
   };
   return (

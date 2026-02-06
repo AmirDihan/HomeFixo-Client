@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: "/services",
         Component: Services,
-        loader: () => fetch('http://localhost:3000/services')
+        loader: () => fetch('https://home-fixo-server.vercel.app/services')
       },
       {
         path: "/service-details/:id",
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
             <ServiceDetails></ServiceDetails>
           </PrivateRoute>
         ),
-        loader: ({params}) => fetch(`http://localhost:3000/service-details/${params.id}`)
+        loader: ({params}) => fetch(`https://home-fixo-server.vercel.app/service-details/${params.id}`)
       },
       {
         path: "/my-services",
@@ -96,7 +96,7 @@ const router = createBrowserRouter([
             <EditSerive></EditSerive>
           </PrivateRoute>
         ),
-        loader: ({params}) => fetch(`http://localhost:3000/service-details/${params.id}`),
+        loader: ({params}) => fetch(`https://home-fixo-server.vercel.app/service-details/${params.id}`),
       },
     ],
   },

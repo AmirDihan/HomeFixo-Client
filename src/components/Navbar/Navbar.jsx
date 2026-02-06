@@ -95,8 +95,9 @@ const Navbar = () => {
         <a className="btn btn-ghost w-40">
           <img
             className="w-full h-full object-contain"
-            src="https://i.ibb.co.com/7Nkr8SqB/Screenshot-2026-02-03-205530-removebg-preview.png"
+            src="https://i.ibb.co.com/35Vtm1D6/Screenshot-2026-02-05-224952-removebg-preview.png"
           />
+          <h3 className="text-xl text-gray-600">HOMEFIXO</h3>
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -117,7 +118,7 @@ const Navbar = () => {
 
             {/* sun icon */}
             <svg
-              className="swap-off h-10 w-10 fill-current"
+              className="swap-on h-10 w-10 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -126,7 +127,7 @@ const Navbar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-on h-10 w-10 fill-current"
+              className="swap-off h-10 w-10 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -143,7 +144,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+              className="dropdown-content absolute right-0 menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
             >
               <li>
                 <Link to={"/profile"}>Profile</Link>

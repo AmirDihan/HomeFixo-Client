@@ -18,7 +18,7 @@ const ProviderServiceCard = ({ service }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/delete-service/${service._id}`, {
+        fetch(`https://home-fixo-server.vercel.app/delete-service/${service._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const ProviderServiceCard = ({ service }) => {
           });
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your service has been deleted.",
           icon: "success",
         });
       }

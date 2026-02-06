@@ -31,7 +31,7 @@ const ServiceDetails = () => {
     // console.log(user)
     // console.log(bookingInfo)
 
-    fetch("http://localhost:3000/booking", {
+    fetch("https://home-fixo-server.vercel.app/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -53,7 +53,7 @@ const ServiceDetails = () => {
 
   const modalRef = useRef();
   return (
-    <div className="mt-10 bg-white rounded-xl w-200 mx-auto shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
+    <div className=" bg-base-200 rounded-xl w-200 mx-auto shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
       {/* Image */}
       <div className="h-90 w-full overflow-hidden">
         <img

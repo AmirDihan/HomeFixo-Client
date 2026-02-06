@@ -5,23 +5,24 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal shadow-2xl text-base-content p-10">
+    <footer className="footer flex flex-col md:flex-row justify-between items-center md:items-baseline  shadow-2xl text-base-content p-10">
       <nav>
-        <h6 className="footer-title">Services</h6>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
-        <a className="link link-hover">Marketing</a>
-        <a className="link link-hover">Advertisement</a>
+        <h6 className="footer-title fw-bold text-start font-bold bg-linear-to-r from-blue-400 to-blue-900 
+          bg-clip-text text-transparent">Services</h6>
+        <a className="link link-hover">Cleaning</a>
+        <a className="link link-hover">Plumbing</a>
+        <a className="link link-hover">Electrical</a>
+        <a className="link link-hover">Painting</a>
       </nav>
       <nav>
-        <h6 className="footer-title">Company</h6>
+        <h6 className="footer-title fw-bold text-start font-bold bg-linear-to-r from-blue-400 to-blue-900 
+          bg-clip-text text-transparent">Company</h6>
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
       </nav>
       <nav>
-        <h6 className="footer-title">Social</h6>
+        <h6 className="footer-title fw-bold text-start font-bold bg-linear-to-r from-blue-400 to-blue-900 
+          bg-clip-text text-transparent">Social</h6>
         <div className="grid grid-flow-col gap-4">
           <Link to={'https://www.facebook.com/AmirDihan'}>
             <FaFacebook size={30} />

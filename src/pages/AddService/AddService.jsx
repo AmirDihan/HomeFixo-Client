@@ -24,7 +24,7 @@ const AddService = () => {
       created_at: new Date()
     }
     
-    fetch('http://localhost:3000/service', {
+    fetch('https://home-fixo-server.vercel.app/service', {
       method: "POST",
       headers: {
         "Content-Type" : "application/json",
