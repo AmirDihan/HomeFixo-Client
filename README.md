@@ -25,7 +25,8 @@ This repository contains the **frontend (client-side)** code of the HomeFixo app
 - Loading spinner while fetching data
 - Responsive design for all devices
 - SweetAlert2 for alerts and confirmations
-
+- Dark mode support
+  
 ---
 
 ## 🧰 Tech Stack
@@ -105,7 +106,6 @@ Payment integration
 
 Advanced filtering and search
 
-Dark mode support
 
 👨‍💻 Author
 Amir Hossan Dihan
